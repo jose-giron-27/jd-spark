@@ -10,15 +10,15 @@ import os ##Permite leer variables del sistema o entorno
 ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("blue")
 
-load_dotenv() ##Carga las variables del .env
-api_key = os.getenv("OPENAI_API_KEY")
+load_dotenv() ##Carga las variables del .env para no escribir la API Key directamente en el código
+api_key = os.getenv("OPENAI_API_KEY") #Recupera la API Key de las variables de entorno
 
 if api_key is None or api_key == "":
     messagebox.showerror(
         "Error",
         "No se encontro la API Key. Revisa el archivo .env"
     )
-cliente = OpenAI(api_key=api_key)
+cliente = OpenAI(api_key=api_key) #Se conecta la App con el API de OpenAI 
 
 # Crear la ventana principal
 ventana = ctk.CTk() ##Abre ventana principal
