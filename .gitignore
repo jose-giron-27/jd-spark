@@ -1,0 +1,10 @@
+# Archivo donde va la API Key
+.env
+
+# Carpetas generadas automaticamente por Python
+__pycache__/
+
+# Archivos compilados por Python
+*.pyc
+
+.DS_Store
