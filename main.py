@@ -94,8 +94,8 @@ salida_texto.pack(pady=10)
 
 #Inicio de las funciones principales
 
-def consultar_ia(instruccion): ##La funcion contiene el texto que enviamos al AI
-    try: # Intenta ejecutar el codigo que podría fallar
+def consultar_ia(instruccion): ##Contiene el texto que enviamos al AI
+    try: # Intenta ejecutar el codigo que podría fallar, en este caso la consulta a la IA
         respuesta = cliente.responses.create( #Envía soli a OpenAI
             model="gpt-4o-mini",
             input=instruccion
@@ -110,7 +110,7 @@ def consultar_ia(instruccion): ##La funcion contiene el texto que enviamos al AI
             "Error",
             "Ocurrio un problema al consultar la IA. Revisa la terminal para ver el detalle."
         )
-        return "Error: no se pudo obtener respuesta de la IA."
+        return "Error: no se pudo obtener respuesta de la IA." 
 
 def resumir_texto():
     texto_usuario = entrada_texto.get("1.0", tk.END).strip()
@@ -209,7 +209,7 @@ def borrar_placeholder_entrada(event):
         entrada_texto.delete("1.0", tk.END)
         entrada_texto.configure(text_color="#FFFFFF")
 
-def cargar_pdf(): 
+def cargar_pdf(): ##Selecciona un PDF y extrae su texto para mostrarlo en el cuadro de texto 
     ruta_pdf = filedialog.askopenfilename( #Selecciona el archivo en otra ventana
         title="Selecciona un archivo PDF",
         filetypes=[("Archivos PDF", "*.pdf")] #Hace que la ventana muestre en especifico archivos .pdf
@@ -226,7 +226,7 @@ def cargar_pdf():
             texto_pagina = pagina.extract_text()
 
             if texto_pagina: #Revisa si la pagina tiene texto
-                texto_pdf += texto_pagina + "\n" #Agrega el texto de la pagina a la var del text_pdf
+                texto_pdf = texto_pdf + texto_pagina + "\n" #Agrega el texto de la pagina a la var del text_pdf
 
         if texto_pdf.strip() == "":
             messagebox.showwarning(
